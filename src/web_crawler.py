@@ -54,7 +54,6 @@ def concat_urls(current, href):
   else:
     return href
 
-#TODO EXPLORE metbuat.az, fix stop_text issue; convert str to unicode/utf-8
 filter_text = lambda s: not any(stop_text in s for stop_text in stop_texts)
 
 def BFS(url, stop_urls, timeout=timeout, output_file=output_file, 
@@ -74,9 +73,7 @@ def BFS(url, stop_urls, timeout=timeout, output_file=output_file,
   while counter < max_limit and len(queue) > 0:
     link = queue.popleft()
     print '\n>> %s' % link
-    
     visited.add(link)
-    
     if not link.startswith("http"):
       print "INVALID LINK"
       continue
@@ -192,31 +189,3 @@ def process_url(url):
   except Exception as e:
     print e.message
     print 'Error'
-
-
-
-
-
-# links = page.find_all('a')
-# print len(links)
-#
-# # print 'original encoding', page.original_encoding
-#
-# # tag = page.html
-# # print type(tag)
-# # print tag.attrs
-# #
-# # if 'lang' in tag.attrs:
-# #   print 'lang exists in html attributes'
-# #
-# # print 'Page language is', tag['lang']
-#
-# source_text = page.get_text("\n", strip=True)
-
-# print 'Text obtained and striped in %.3f secs.' % (time.time() - end_time)
-
-
-
-
-
-
